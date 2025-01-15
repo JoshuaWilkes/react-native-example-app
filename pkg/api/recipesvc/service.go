@@ -28,6 +28,7 @@ func (s *Service) QueryRecipes(ctx context.Context, req *connect.Request[recipev
 		return connect.NewResponse(res), nil
 	}
 
+OuterLoop:
 	for _, recipe := range recipes {
 		if strings.Contains(strings.ToLower(recipe.Title), strings.ToLower(filter)) {
 			filteredRecipes = append(filteredRecipes, recipe)
@@ -37,17 +38,16 @@ func (s *Service) QueryRecipes(ctx context.Context, req *connect.Request[recipev
 		for _, recipeTag := range recipe.Tags {
 			if strings.Contains(strings.ToLower(recipeTag), strings.ToLower(filter)) {
 				filteredRecipes = append(filteredRecipes, recipe)
-				continue
+				continue OuterLoop // Continue the outer loop
 			}
 		}
 
 		for _, ingredient := range recipe.Ingredients {
 			if strings.Contains(strings.ToLower(ingredient), strings.ToLower(filter)) {
 				filteredRecipes = append(filteredRecipes, recipe)
-				continue
+				continue OuterLoop // Continue the outer loop
 			}
 		}
-
 	}
 
 	res := &recipev1alpha1.QueryRecipesResponse{
