@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package recipe.v1alpha1;
+
+
+service RecipeService {
+    rpc QueryRecipes(QueryRecipesRequest)returns (QueryRecipesResponse){}
+    rpc TopRecipes(TopRecipesRequest)returns (TopRecipesResponse){}
+}
+
+
+
+message Recipe {
+    string title = 1;
+    repeated string ingredients = 2;
+    string body = 3;
+    repeated string tegs = 4;
+}
+
+message QueryRecipesRequest{
+    string search = 1;
+}
+
+message QueryRecipesResponse{
+    repeated Recipe recipes = 1;
+}
+
+message TopRecipesRequest{
+}
+
+message TopRecipesResponse{
+    repeated Recipe recipes = 1;
+}
