@@ -14,6 +14,7 @@ type Service struct {
 
 var _ recipev1alpha1connect.RecipeServiceHandler = &Service{}
 
+// @TODO add handling for pagination
 func (s *Service) QueryRecipes(ctx context.Context, req *connect.Request[recipev1alpha1.QueryRecipesRequest]) (*connect.Response[recipev1alpha1.QueryRecipesResponse], error) {
 	// Extract filters from the request
 	filter := strings.ToLower(req.Msg.Search)
