@@ -11,10 +11,11 @@ service RecipeService {
 
 
 message Recipe {
-    string title = 1;
-    repeated string ingredients = 2;
-    string body = 3;
-    repeated string tegs = 4;
+    int64 id = 1;
+    string title = 2;
+    repeated string ingredients = 3;
+    string body = 4;
+    repeated string tags = 5;
 }
 
 message QueryRecipesRequest{

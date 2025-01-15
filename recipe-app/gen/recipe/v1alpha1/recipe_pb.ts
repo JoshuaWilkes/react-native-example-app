@@ -10,31 +10,36 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file recipe/v1alpha1/recipe.proto.
  */
 export const file_recipe_v1alpha1_recipe: GenFile = /*@__PURE__*/
-  fileDesc("ChxyZWNpcGUvdjFhbHBoYTEvcmVjaXBlLnByb3RvEg9yZWNpcGUudjFhbHBoYTEiSAoGUmVjaXBlEg0KBXRpdGxlGAEgASgJEhMKC2luZ3JlZGllbnRzGAIgAygJEgwKBGJvZHkYAyABKAkSDAoEdGVncxgEIAMoCSJXChNRdWVyeVJlY2lwZXNSZXF1ZXN0Eg4KBnNlYXJjaBgBIAEoCRISCgpwYWdlX3Rva2VuGAIgASgJEhIKBWxpbWl0GAMgASgDSACIAQFCCAoGX2xpbWl0IlkKFFF1ZXJ5UmVjaXBlc1Jlc3BvbnNlEigKB3JlY2lwZXMYASADKAsyFy5yZWNpcGUudjFhbHBoYTEuUmVjaXBlEhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSITChFUb3BSZWNpcGVzUmVxdWVzdCI+ChJUb3BSZWNpcGVzUmVzcG9uc2USKAoHcmVjaXBlcxgBIAMoCzIXLnJlY2lwZS52MWFscGhhMS5SZWNpcGUyxwEKDVJlY2lwZVNlcnZpY2USXQoMUXVlcnlSZWNpcGVzEiQucmVjaXBlLnYxYWxwaGExLlF1ZXJ5UmVjaXBlc1JlcXVlc3QaJS5yZWNpcGUudjFhbHBoYTEuUXVlcnlSZWNpcGVzUmVzcG9uc2UiABJXCgpUb3BSZWNpcGVzEiIucmVjaXBlLnYxYWxwaGExLlRvcFJlY2lwZXNSZXF1ZXN0GiMucmVjaXBlLnYxYWxwaGExLlRvcFJlY2lwZXNSZXNwb25zZSIAYgZwcm90bzM");
+  fileDesc("ChxyZWNpcGUvdjFhbHBoYTEvcmVjaXBlLnByb3RvEg9yZWNpcGUudjFhbHBoYTEiVAoGUmVjaXBlEgoKAmlkGAEgASgDEg0KBXRpdGxlGAIgASgJEhMKC2luZ3JlZGllbnRzGAMgAygJEgwKBGJvZHkYBCABKAkSDAoEdGFncxgFIAMoCSJXChNRdWVyeVJlY2lwZXNSZXF1ZXN0Eg4KBnNlYXJjaBgBIAEoCRISCgpwYWdlX3Rva2VuGAIgASgJEhIKBWxpbWl0GAMgASgDSACIAQFCCAoGX2xpbWl0IlkKFFF1ZXJ5UmVjaXBlc1Jlc3BvbnNlEigKB3JlY2lwZXMYASADKAsyFy5yZWNpcGUudjFhbHBoYTEuUmVjaXBlEhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSITChFUb3BSZWNpcGVzUmVxdWVzdCI+ChJUb3BSZWNpcGVzUmVzcG9uc2USKAoHcmVjaXBlcxgBIAMoCzIXLnJlY2lwZS52MWFscGhhMS5SZWNpcGUyxwEKDVJlY2lwZVNlcnZpY2USXQoMUXVlcnlSZWNpcGVzEiQucmVjaXBlLnYxYWxwaGExLlF1ZXJ5UmVjaXBlc1JlcXVlc3QaJS5yZWNpcGUudjFhbHBoYTEuUXVlcnlSZWNpcGVzUmVzcG9uc2UiABJXCgpUb3BSZWNpcGVzEiIucmVjaXBlLnYxYWxwaGExLlRvcFJlY2lwZXNSZXF1ZXN0GiMucmVjaXBlLnYxYWxwaGExLlRvcFJlY2lwZXNSZXNwb25zZSIAYgZwcm90bzM");
 
 /**
  * @generated from message recipe.v1alpha1.Recipe
  */
 export type Recipe = Message<"recipe.v1alpha1.Recipe"> & {
   /**
-   * @generated from field: string title = 1;
+   * @generated from field: int64 id = 1;
+   */
+  id: bigint;
+
+  /**
+   * @generated from field: string title = 2;
    */
   title: string;
 
   /**
-   * @generated from field: repeated string ingredients = 2;
+   * @generated from field: repeated string ingredients = 3;
    */
   ingredients: string[];
 
   /**
-   * @generated from field: string body = 3;
+   * @generated from field: string body = 4;
    */
   body: string;
 
   /**
-   * @generated from field: repeated string tegs = 4;
+   * @generated from field: repeated string tags = 5;
    */
-  tegs: string[];
+  tags: string[];
 };
 
 /**
