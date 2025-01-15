@@ -25,6 +25,11 @@ The API using [buf connect](https://connectrpc.com/) with code generation for th
    ```
 3. Copy the ngrok link like https://dfe0.ngrok-free.app and set it in ./recipe-app/.env as per the .env.example file
 
+4. you can regenerate the api code using buf
+   ```bash
+   buf generate
+   ```
+
 # React Native App
 
 1. Install dependencies
