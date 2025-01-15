@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  
+  "configurations": [
+    {
+      "name": "run recipe server",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "cmd/server/main.go",
+      // "envFile": "${workspaceFolder}/proxy/.env",
+      // "dlvFlags": ["--check-go-version=false"]
+    },
+  ]
+}
