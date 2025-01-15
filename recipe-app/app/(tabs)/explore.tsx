@@ -45,6 +45,7 @@ export default function TabTwoScreen() {
 
       <DebouncedInput debounce={500} value={search} onChange={setSearch} />
 
+      {/* @TODO: add support for loading more results when scrolling to the bottom of the page */}
       {recipes?.map((recipe, i) => {
         return <Recipe key={`rec-${recipe.id}`} recipe={recipe} />;
       })}
