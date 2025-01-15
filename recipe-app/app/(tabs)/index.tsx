@@ -27,6 +27,12 @@ export default function HomeScreen() {
       {data?.recipes.map((recipe, i) => {
         return <Recipe key={`rec-${recipe.id}`} recipe={recipe} />;
       })}
+      {error && (
+        <>
+          <ThemedText type="defaultSemiBold">Something went wrong</ThemedText>
+          <ThemedText type="default">{error.message}</ThemedText>
+        </>
+      )}
     </ParallaxScrollView>
   );
 }

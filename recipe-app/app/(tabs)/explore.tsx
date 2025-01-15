@@ -1,16 +1,14 @@
-import { StyleSheet, Image, Platform, TextInput } from "react-native";
+import { StyleSheet } from "react-native";
 
-import { Collapsible } from "@/components/Collapsible";
-import { ExternalLink } from "@/components/ExternalLink";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useInfiniteQuery } from "@connectrpc/connect-query";
-import { queryRecipes } from "../../gen/recipe/v1alpha1/recipe-RecipeService_connectquery";
 import { useMemo, useState } from "react";
-import Recipe from "../../components/Recipe";
 import DebouncedInput from "../../components/DebouncedInput";
+import Recipe from "../../components/Recipe";
+import { queryRecipes } from "../../gen/recipe/v1alpha1/recipe-RecipeService_connectquery";
 
 export default function TabTwoScreen() {
   const [search, setSearch] = useState<string>("");
@@ -50,6 +48,13 @@ export default function TabTwoScreen() {
       {recipes?.map((recipe, i) => {
         return <Recipe key={`rec-${recipe.id}`} recipe={recipe} />;
       })}
+
+      {error && (
+        <>
+          <ThemedText type="defaultSemiBold">Something went wrong</ThemedText>
+          <ThemedText type="default">{error.message}</ThemedText>
+        </>
+      )}
     </ParallaxScrollView>
   );
 }

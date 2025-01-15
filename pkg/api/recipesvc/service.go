@@ -2,6 +2,7 @@ package recipesvc
 
 import (
 	"context"
+	"strings"
 
 	"connectrpc.com/connect"
 	recipev1alpha1 "github.com/JoshuaWilkes/react-native-example-app/pkg/gen/proto/recipe/v1alpha1"
@@ -13,10 +14,44 @@ type Service struct {
 
 var _ recipev1alpha1connect.RecipeServiceHandler = &Service{}
 
-func (s *Service) QueryRecipes(context.Context, *connect.Request[recipev1alpha1.QueryRecipesRequest]) (*connect.Response[recipev1alpha1.QueryRecipesResponse], error) {
+func (s *Service) QueryRecipes(ctx context.Context, req *connect.Request[recipev1alpha1.QueryRecipesRequest]) (*connect.Response[recipev1alpha1.QueryRecipesResponse], error) {
+	// Extract filters from the request
+	filter := strings.ToLower(req.Msg.Search)
+
+	// Filter recipes based on title and tags
+	filteredRecipes := []*recipev1alpha1.Recipe{}
+
+	if filter == "" {
+		res := &recipev1alpha1.QueryRecipesResponse{
+			Recipes: recipes,
+		}
+		return connect.NewResponse(res), nil
+	}
+
+	for _, recipe := range recipes {
+		if strings.Contains(strings.ToLower(recipe.Title), strings.ToLower(filter)) {
+			filteredRecipes = append(filteredRecipes, recipe)
+			continue
+		}
+
+		for _, recipeTag := range recipe.Tags {
+			if strings.Contains(strings.ToLower(recipeTag), strings.ToLower(filter)) {
+				filteredRecipes = append(filteredRecipes, recipe)
+				continue
+			}
+		}
+
+		for _, ingredient := range recipe.Ingredients {
+			if strings.Contains(strings.ToLower(ingredient), strings.ToLower(filter)) {
+				filteredRecipes = append(filteredRecipes, recipe)
+				continue
+			}
+		}
+
+	}
 
 	res := &recipev1alpha1.QueryRecipesResponse{
-		Recipes: recipes,
+		Recipes: filteredRecipes,
 	}
 
 	return connect.NewResponse(res), nil
