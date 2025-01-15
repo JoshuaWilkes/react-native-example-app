@@ -19,10 +19,13 @@ message Recipe {
 
 message QueryRecipesRequest{
     string search = 1;
+    string page_token = 2;
+    optional int64 limit = 3;
 }
 
 message QueryRecipesResponse{
     repeated Recipe recipes = 1;
+    string next_page_token = 2;
 }
 
 message TopRecipesRequest{
